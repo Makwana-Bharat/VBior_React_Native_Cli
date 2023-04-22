@@ -1,9 +1,8 @@
 import React from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Modal } from 'react-native-paper';
+; import { Modal } from 'react-native-paper';
 import { styles } from '../assets/Stylesheet/Styles';
 import { View, TouchableOpacity } from 'react-native';
-import { FontAwesome5, MaterialCommunityIcons, Ionicons, FontAwesome, Octicons } from '@expo/vector-icons';
+import { FontAwesome5, MaterialCommunityIcons, Ionicons, FontAwesome, Octicons } from 'react-native-vector-icons';
 import { Language } from '../Redux/store';
 export const LanguageHandler = ({ LangModal, setLangModal, Propertys, setPropertys }) => {
     return (

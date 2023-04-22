@@ -1,21 +1,15 @@
 import React from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Modal } from 'react-native-paper';
 import { styles } from '../assets/Stylesheet/Styles';
 import { View, TouchableOpacity } from 'react-native';
-import { FontAwesome5, MaterialCommunityIcons, Ionicons, FontAwesome, Octicons } from '@expo/vector-icons';
+import { FontAwesome5, MaterialCommunityIcons, Ionicons, FontAwesome, Octicons } from 'react-native-vector-icons';
 import { ThemeHandler } from './ThemeHandler';
 import { LanguageHandler } from './LanguageHandler';
-import * as Speech from 'expo-speech';
-/* Speech To Text */
+import LinearGradient from 'react-native-linear-gradient';
 
 export const Other = ({ other, setOther, Propertys, setPropertys }) => {
     const [ThemeModal, setThemeModal] = React.useState(false);
     const [LangModal, setLangModal] = React.useState(false);
-    const speak = () => {
-        const thingToSay = 'Hello Hii';
-        Speech.speak(thingToSay);
-    };
     return (
         <>
             <Modal
@@ -27,7 +21,6 @@ export const Other = ({ other, setOther, Propertys, setPropertys }) => {
                         end={{ x: 1, y: 1 }}
                     >
                         <TouchableOpacity onPress={() => {
-                            speak();
                             setPropertys({
                                 ...Propertys, MicisOn: Propertys.MicisOn ? false : true, MicLogo: Propertys.MicisOn ? "microphone-slash" : "microphone"
                             });
