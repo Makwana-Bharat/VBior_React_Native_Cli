@@ -2,9 +2,6 @@ import CodeEditor, { CodeEditorSyntaxStyles } from '@rivascva/react-native-code-
 import { View, Text } from 'react-native';
 const CodeComponent = () => {
     return (
-        // <View>
-        //     <Text>Work</Text>
-        // </View>
         <CodeEditor
             style={{
                 fontSize: 20,
