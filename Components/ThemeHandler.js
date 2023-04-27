@@ -1,8 +1,7 @@
 import React from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Modal, RadioButton } from 'react-native-paper';
 import { View, TouchableOpacity, Text, ScrollView } from 'react-native';
-import { FontAwesome5, MaterialCommunityIcons, Ionicons, FontAwesome, Octicons } from 'react-native-vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Tiles } from '../Redux/store'
 export const ThemeHandler = ({ ThemeModal, setTheme, Propertys, setPropertys }) => {
     return (

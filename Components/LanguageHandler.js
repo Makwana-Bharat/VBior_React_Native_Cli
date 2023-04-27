@@ -2,7 +2,7 @@ import React from 'react';
 ; import { Modal } from 'react-native-paper';
 import { styles } from '../assets/Stylesheet/Styles';
 import { View, TouchableOpacity } from 'react-native';
-import { FontAwesome5, MaterialCommunityIcons, Ionicons, FontAwesome, Octicons } from 'react-native-vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Language } from '../Redux/store';
 export const LanguageHandler = ({ LangModal, setLangModal, Propertys, setPropertys }) => {
     return (

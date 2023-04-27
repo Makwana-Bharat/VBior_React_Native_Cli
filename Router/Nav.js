@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Text,
     TouchableOpacity,
@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Ionicons } from 'react-native-vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Output from '../Screens/Output';
 import { headerStyle, Editor } from '../assets/Stylesheet/Styles';
 import CodeEditor from '@rivascva/react-native-code-editor';
@@ -35,13 +35,13 @@ function Nav({ Propertys, setPropertys }) {
                         style={headerStyle.headerButton}
                         onPress={Save}
                     >
-                        <Icon name="save-outline" size={24} color="#fff" />
+                        <MaterialCommunityIcons name="content-save-outline" size={30} color="#fff" />
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={headerStyle.headerButton}
                         onPress={() => setOther(true)}
                     >
-                        <Icon name="ellipsis-vertical" size={24} color="#fff" />
+                        <MaterialCommunityIcons name="dots-vertical" size={30} color="#fff" />
                     </TouchableOpacity>
                 </View>
                 <Other
@@ -53,32 +53,9 @@ function Nav({ Propertys, setPropertys }) {
             </View>
         );
     }
-
     const CodePad = (props) => {
         const [code, setCode] = useState(Propertys.code);
         const [loading, setLoading] = useState(false);
-        /* === FORMATE === */
-        const formatCode = (code) => {
-            try {
-                return beautify(code, {
-                    indent_size: 2,
-                    indent_with_tabs: false,
-                    eol: '\n',
-                    end_with_newline: true,
-                    max_preserve_newlines: 2,
-                    wrap_line_length: 80,
-                    space_before_conditional: true,
-                });
-            } catch (error) {
-                console.error(error);
-                return code;
-            }
-        };
-        // setInterval(() => {
-        //     setCode(formatCode(code))
-        //     console.log("work")
-        // }, 10000);
-
         const handleRunCode = async () => {
             setLoading(true);
             try {

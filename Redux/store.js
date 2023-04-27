@@ -64,7 +64,7 @@ export const Language = [
         code: `#include<stdio.h>
 int main()
 {
-    printf("\nHello World");
+    printf("Hello World");
     return 0;
 }`
     },
