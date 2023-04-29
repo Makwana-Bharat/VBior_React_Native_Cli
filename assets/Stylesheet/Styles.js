@@ -5,17 +5,14 @@ export const headerStyle = StyleSheet.create({
     },
     header: {
         backgroundColor: '#2196F3',
-        paddingTop: 20,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 10,
-        height: 80,
     },
     headerButton: {
         padding: 10,
         borderRadius: 5,
-        marginRight: 10,
     },
     headerTitle: {
         color: '#fff',

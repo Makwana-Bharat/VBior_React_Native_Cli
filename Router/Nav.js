@@ -15,11 +15,96 @@ import CodeEditor from '@rivascva/react-native-code-editor';
 import { FAB } from 'react-native-paper';
 import { Save } from '../Components/Save';
 import { Other } from '../Components/Other';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Voice from '@react-native-community/voice';
+import { PermissionsAndroid } from 'react-native';
+
 const Stack = createStackNavigator();
 
 function Nav({ Propertys, setPropertys }) {
 
     function CodePadHeader() {
+
+        const [recognized, setRecognized] = React.useState('');
+        const [started, setStarted] = React.useState('');
+        const [results, setResults] = React.useState([]);
+
+        React.useEffect(() => {
+            requestMicrophonePermission();
+            Voice.onSpeechRecognized = onSpeechRecognized;
+            Voice.onSpeechStart = onSpeechStart;
+            Voice.onSpeechResults = onSpeechResults;
+
+            Voice.onSpeechError = (e) => {
+                console.error(e);
+            }
+        }, []);
+
+        const onSpeechRecognized = (e) => {
+            setRecognized('√');
+        }
+
+        const onSpeechStart = (e) => {
+            setStarted('√');
+        }
+
+        const onSpeechResults = (e) => {
+            const recognizedSpeech = e.value[0];
+            switch (recognizedSpeech.toLowerCase()) {
+                case "run":
+                    Alert.alert("work")
+                    break;
+                default:
+                    console.log(Propertys.Language.code)
+                    setPropertys({
+                        ...Propertys,
+                        Language: {
+                            ...Propertys.Language,
+                            code: Propertys.Language.code + recognizedSpeech
+                        }
+                    });
+
+                    break;
+            }
+        };
+
+        const startRecognition = async () => {
+            try {
+                await Voice.start('en-US');
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        const stopRecognition = async () => {
+            try {
+                await Voice.stop();
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        const requestMicrophonePermission = async () => {
+            try {
+                const granted = await PermissionsAndroid.request(
+                    PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+                    {
+                        title: 'Microphone Permission',
+                        message: 'This app needs access to your microphone',
+                        buttonNeutral: 'Ask Me Later',
+                        buttonNegative: 'Cancel',
+                        buttonPositive: 'OK',
+                    },
+                );
+                if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                    console.log('Microphone permission granted');
+                } else {
+                    console.log('Microphone permission denied');
+                }
+            } catch (err) {
+                console.warn(err);
+            }
+        };
         const [other, setOther] = useState(false);
         return (
             <View style={headerStyle.header}>
@@ -27,8 +112,9 @@ function Nav({ Propertys, setPropertys }) {
                 <View
                     style={{
                         display: 'flex',
-                        width: '30%',
                         flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center'
                     }}
                 >
                     <TouchableOpacity
@@ -36,6 +122,18 @@ function Nav({ Propertys, setPropertys }) {
                         onPress={Save}
                     >
                         <MaterialCommunityIcons name="content-save-outline" size={30} color="#fff" />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={headerStyle.headerButton}
+                        onPress={() => {
+                            Propertys.MicisOn ? stopRecognition() : startRecognition();
+                            setPropertys({
+                                ...Propertys,
+                                MicisOn: !Propertys.MicisOn,
+                                MicLogo: Propertys.MicisOn ? "microphone-slash" : "microphone"
+                            });
+                        }}>
+                        <FontAwesome name={Propertys.MicLogo} size={24} color={!Propertys.MicisOn ? "#fff" : "green"} />
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={headerStyle.headerButton}

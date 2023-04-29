@@ -99,6 +99,6 @@ export const Setting = {
     File: "document*",
     Theme: CodeEditorSyntaxStyles.atomOneDarkReasonable,
     Language: Language[0],
-    MicisOn: Mic[0].on,
-    MicLogo: Mic[0].icon,
+    MicisOn: Mic[1].on,
+    MicLogo: Mic[1].icon,
 }
