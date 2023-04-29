@@ -13,7 +13,9 @@ export const LanguageHandler = ({ LangModal, setLangModal, Propertys, setPropert
                 {
                     Language.map((val, i) => (
                         <View style={[styles.option, { backgroundColor: '#006400' }]} key={i}>
-                            <TouchableOpacity onPress={v => { setPropertys({ ...Propertys, Language: val }) }}>
+                            <TouchableOpacity onPress={v => {
+                                setPropertys({ ...Propertys, Language: val, File: "document*" });
+                            }}>
                                 <MaterialCommunityIcons name={val.logo} size={30} color="#fff" />
                             </TouchableOpacity>
                         </View>

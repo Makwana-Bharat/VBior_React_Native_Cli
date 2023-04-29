@@ -14,15 +14,6 @@ export const Other = ({ other, setOther, Propertys, setPropertys }) => {
     return (
         <Modal visible={other} animationType="fade">
             <View style={styles.modalContainer}>
-                {/* <LinearGradient
-                    colors={['#FFB300', '#FFA000', '#FF8F00', '#FF6F00', '#FF5722']}
-                    style={styles.option}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                >
-                    
-
-                </LinearGradient> */}
                 <LinearGradient colors={['#FFC300', '#FF5733', '#3366CC', '#2E4053']} style={styles.option}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
